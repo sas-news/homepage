@@ -1,20 +1,42 @@
 ---
-import "../styles/global.css";
+import "@styles/global.css";
+import Top from "@components/Top.astro";
 ---
 
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/avicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="generator" content={Astro.generator} />
-    <title>SAS新聞 | Official Site</title>
-  </head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <meta name="generator" content={Astro.generator} />
+        <title>SAS新聞 | Official Site</title>
+    </head>
 
-  <body>
-    <slot />
-  </body>
+    <body>
+        <Top />
+        <main>
+            <slot />
+        </main>
+    </body>
 </html>
+
+<style>
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+            sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+</style>
