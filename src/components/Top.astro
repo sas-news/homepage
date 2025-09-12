@@ -72,4 +72,21 @@ import Back from "@img/background.png";
             font-weight: bold;
         }
     }
+    @media (width < 450px) {
+        .title-section {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-left: 0;
+        }
+        .title-contents {
+            margin-inline: 0;
+            .name {
+                font-size: 1.75rem;
+            }
+        }
+    }
 </style>
