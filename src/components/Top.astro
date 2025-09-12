@@ -1,0 +1,75 @@
+---
+import "@styles/global.css";
+
+import { Image } from "astro:assets";
+import Logo from "@img/sasnews-logo.png";
+import Back from "@img/background.png";
+---
+
+<div class="top">
+    <Image
+        src={Back}
+        alt="背景用画像"
+        width={600}
+        height={600}
+        class="blur-bg"
+        aria-hidden="true"
+    />
+    <div class="title-section">
+        <Image src={Logo} alt="SAS新聞ロゴ" width={200} height={200} class="logo" />
+        <div class="title-contents">
+            <h1 class="name">SAS新聞</h1>
+        </div>
+    </div>
+</div>
+
+<style>
+    .top {
+        position: relative;
+        overflow: hidden;
+        z-index: 0;
+        height: 500px;
+        & > *:not(.blur-bg) {
+            position: relative;
+            z-index: 1;
+        }
+        .blur-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            filter: blur(5px) brightness(1.1) opacity(0.15) contrast(1.2);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            width: 100dvw;
+            height: 500px;
+            mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+        }
+    }
+    .title-section {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+        gap: 1rem;
+    }
+    .logo {
+        border-radius: 50%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 150px;
+        height: 150px;
+        margin-left: 1rem;
+    }
+    .title-contents {
+        margin-inline: 1rem;
+        .name {
+            font-size: 2.25rem;
+            font-weight: bold;
+        }
+    }
+</style>
