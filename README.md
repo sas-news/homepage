@@ -1,13 +1,51 @@
-# Astro with Tailwind
+# SAS 新聞 | Official Site
 
-```sh
-npm create astro@latest -- --template with-tailwindcss
+このリポジトリは、SAS 新聞の公式ウェブサイトのソースコードです。
+
+**作り途中です。まだ公開していません。**
+
+## ディレクトリ構成
+
+```
+src/
+├── assets/       # 画像やスタイルシートなどの静的アセット
+├── components/   # 再利用可能なUIコンポーネント
+├── layouts/      # ページレイアウト
+├── pages/        # 各ページのエントリーポイント
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/with-tailwindcss/devcontainer.json)
+## 使用技術
 
-Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
+-   **Astro**: 静的サイトジェネレーター
+-   **CSS**: スタイル定義
+-   **Iconify**: アイコン管理
 
-For complete setup instructions, please see our [Tailwind Integration Guide](https://docs.astro.build/en/guides/integrations-guide/tailwind).
+## 開発方法
+
+1. 必要な依存関係をインストールします。
+
+    ```bash
+    bun i
+    ```
+
+2. 開発サーバーを起動します。
+
+    ```bash
+    bun run dev
+    ```
+
+3. ブラウザで `http://localhost:4321` を開きます。
+
+## ビルド
+
+本番用のビルドを作成するには、以下を実行します：
+
+```bash
+bun run build
+```
+
+生成されたファイルは `dist/` ディレクトリに出力されます。
+
+## ライセンス
+
+このプロジェクトのライセンスは未指定です。
