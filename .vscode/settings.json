@@ -1,6 +1,3 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
-  }
+    "prettier.prettierPath": "./node_modules/prettier"
 }
