@@ -1,0 +1,154 @@
+---
+import "@styles/global.css";
+import { Icon } from "astro-icon/components";
+
+const snsLinks = [
+    {
+        name: "GitHub",
+        url: "https://github.com/",
+        icon: "simple-icons:github",
+        account: "sas-news",
+        color: "#181717",
+    },
+    {
+        name: "X",
+        url: "https://x.com",
+        icon: "simple-icons:x",
+        account: "sas_shinbun",
+        color: "#0f1419",
+    },
+    {
+        name: "Instagram",
+        url: "https://www.instagram.com/",
+        icon: "simple-icons:instagram",
+        account: "sas_shinbun",
+        color: "#E4405F",
+    },
+    {
+        name: "Zenn",
+        url: "https://zenn.dev/",
+        icon: "simple-icons:zenn",
+        account: "sasnews",
+        color: "#3EA8FF",
+    },
+    {
+        name: "Qiita",
+        url: "https://qiita.com/",
+        icon: "simple-icons:qiita",
+        account: "SASNEWS",
+        color: "#55C500",
+    },
+];
+---
+
+<section class="sns-links">
+    <ul>
+        {
+            snsLinks.map((link) => (
+                <li>
+                    <a
+                        href={`${link.url.replace(/\/?$/, "/")}${link.account || ""}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Icon name={link.icon} style={{ color: link.color }} />
+                        <span class="account-info">
+                            <span class="service-name">{link.name}</span>
+                            <span class="account-id">@{link.account || "N/A"}</span>
+                        </span>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</section>
+
+<style>
+    .sns-links {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li + li {
+                margin-top: 1rem;
+            }
+
+            @media (650px < width) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                li + li {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+    a {
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        border: 1px solid #f0f0f0;
+        border-radius: 8px;
+        gap: 1rem;
+        text-decoration: none;
+        color: #222;
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: #fafafa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-color: #e0e0e0;
+        }
+
+        [data-icon] {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .account-info {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            .service-name {
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+            .account-id {
+                font-size: 0.9rem;
+                color: #888;
+                font-family: monospace;
+            }
+        }
+        @media (width < 400px) {
+            .account-info {
+                flex-direction: column;
+                align-items: flex-start;
+                .service-name,
+                .account-id {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+        @media (width < 300px) {
+            padding: 0.75rem 1rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
+            [data-icon] {
+                font-size: 1.5rem;
+            }
+            .account-info {
+                width: 100%;
+                .account-id {
+                    font-size: 0.85rem;
+                }
+            }
+        }
+    }
+</style>

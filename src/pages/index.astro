@@ -1,15 +1,10 @@
 ---
-import "../styles/global.css";
-// Component Imports
-import Layout from "../layouts/Layout.astro";
+import "@styles/global.css";
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import Layout from "@layouts/Layout.astro";
+import SNS from "@components/SNS.astro";
 ---
 
 <Layout>
-  <div class="grid place-items-center h-screen content-center">
-    <h1 class="text-4xl font-bold">SAS新聞</h1>
-    <!-- ロード時間のログを表示するエリア -->
-  </div>
+    <SNS />
 </Layout>
