@@ -1,0 +1,145 @@
+---
+import { Icon } from "astro-icon/components";
+
+const skillGroups = [
+    {
+        category: "プログラミング言語・言語",
+        skills: [
+            { name: "HTML", icon: "skill-icons:html", level: 5 },
+            { name: "CSS", icon: "skill-icons:css", level: 5 },
+            { name: "JavaScript", icon: "skill-icons:javascript", level: 5 },
+            { name: "TypeScript", icon: "skill-icons:typescript", level: 4 },
+            { name: "Python", icon: "skill-icons:python-light", level: 4 },
+            { name: "Java", icon: "skill-icons:java-light", level: 2 },
+        ],
+    },
+    {
+        category: "ライブラリ・フレームワーク",
+        skills: [
+            { name: "Astro", icon: "skill-icons:astro", level: 5 },
+            { name: "React", icon: "skill-icons:react-dark", level: 5 },
+            { name: "Next.js", icon: "skill-icons:nextjs-light", level: 4 },
+            { name: "Vite", icon: "skill-icons:vite-light", level: 4 },
+            { name: "Material UI", icon: "skill-icons:materialui-light", level: 2 },
+            { name: "Tailwind CSS", icon: "skill-icons:tailwindcss-light", level: 1 },
+        ],
+    },
+    {
+        category: "ツール",
+        skills: [
+            { name: "Git", icon: "skill-icons:git", level: 5 },
+            { name: "GitHub", icon: "skill-icons:github-dark", level: 5 },
+            { name: "VSCode", icon: "skill-icons:vscode-light", level: 5 },
+            { name: "Arch Linux", icon: "skill-icons:arch-dark", level: 4 },
+            { name: "Arduino", icon: "skill-icons:arduino", level: 4 },
+            { name: "Raspberry Pi", icon: "skill-icons:raspberrypi-light", level: 3 },
+            { name: "Azure", icon: "skill-icons:azure-light", level: 3 },
+            { name: "Neovim", icon: "skill-icons:neovim-light", level: 2 },
+        ],
+    },
+    {
+        category: "クリエイティブ",
+        skills: [
+            { name: "After Effects", icon: "skill-icons:aftereffects", level: 4 },
+            { name: "Premiere Pro", icon: "skill-icons:premiere", level: 3 },
+            { name: "Photoshop", icon: "skill-icons:photoshop", level: 3 },
+            { name: "Blender", icon: "skill-icons:blender-dark", level: 3 },
+            { name: "Unity", icon: "skill-icons:unity-light", level: 2 },
+            { name: "Figma", icon: "skill-icons:figma-light", level: 2 },
+        ],
+    },
+];
+---
+
+<section class="skills card">
+    <h2>My Skills</h2>
+
+    {
+        skillGroups.map((group) => (
+            <>
+                <h3>{group.category}</h3>
+                <div class="skill-list">
+                    {group.skills.map((skill) => (
+                        <div class="item" title={skill.name}>
+                            <Icon name={skill.icon} />
+                            <p>{"★".repeat(skill.level) + "☆".repeat(5 - skill.level)}</p>
+                            <span>{skill.name}</span>
+                        </div>
+                    ))}
+                </div>
+            </>
+        ))
+    }
+</section>
+<style>
+    .skill-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: var(--card-bg);
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+            position: relative;
+            container-type: inline-size;
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+            [data-icon] {
+                font-size: 3rem;
+                filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+            }
+            p {
+                font-size: 1.2rem;
+                color: #e0b807;
+                margin: 0;
+
+                @container (width < 80px) {
+                    font-size: 1rem;
+                }
+            }
+            span {
+                position: absolute;
+                bottom: calc(100% - 5px);
+                left: 50%;
+                transform: translateX(-50%);
+                background: #222;
+                color: #fff;
+                padding: 0.4rem 0.8rem;
+                border-radius: 4px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                z-index: 10;
+                opacity: 0;
+                visibility: hidden;
+                transition:
+                    opacity 0.3s ease,
+                    transform 0.3s ease;
+                &:before {
+                    content: "";
+                    --triangle-size: 5px;
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: calc(var(--triangle-size) * -1);
+                    border: var(--triangle-size) solid transparent;
+                    border-top: var(--triangle-size) solid #222;
+                }
+            }
+            &:hover span {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+    }
+</style>
