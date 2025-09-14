@@ -52,26 +52,95 @@ const skillGroups = [
 ---
 
 <section class="skills card">
-    <h2>My Skills</h2>
+    <div class="skills-header">
+        <h2>My Skills</h2>
+        <div class="view-switch">
+            <input type="checkbox" id="view-toggle" />
+            <div class="labels">
+                <label for="view-toggle">
+                    <Icon name="ic:baseline-grid-view" />
+                </label>
+                <label for="view-toggle">
+                    <Icon name="ic:baseline-view-list" />
+                </label>
+            </div>
+        </div>
+    </div>
 
-    {
-        skillGroups.map((group) => (
-            <>
-                <h3>{group.category}</h3>
-                <div class="skill-list">
-                    {group.skills.map((skill) => (
-                        <div class="item" title={skill.name}>
-                            <Icon name={skill.icon} />
-                            <p>{"★".repeat(skill.level) + "☆".repeat(5 - skill.level)}</p>
-                            <span>{skill.name}</span>
-                        </div>
-                    ))}
-                </div>
-            </>
-        ))
-    }
+    <div class="skills-container">
+        {
+            skillGroups.map((group) => (
+                <>
+                    <h3>{group.category}</h3>
+                    <div class="skill-list">
+                        {group.skills.map((skill) => (
+                            <div class="item" title={skill.name}>
+                                <Icon name={skill.icon} />
+                                <p>{"★".repeat(skill.level) + "☆".repeat(5 - skill.level)}</p>
+                                <span>{skill.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                </>
+            ))
+        }
+    </div>
 </section>
 <style>
+    .skills-container h3 {
+        margin-top: 1rem;
+
+        &:first-of-type {
+            margin-top: 0;
+        }
+    }
+    .skills-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .view-switch {
+            position: relative;
+            input {
+                display: none;
+            }
+            .labels {
+                display: flex;
+                align-items: center;
+                border-radius: 4px;
+                background-color: rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                label {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    padding: 0.3rem;
+                    transition: background-color 0.5s;
+                    [data-icon] {
+                        font-size: 1.1rem;
+                        color: #666;
+                    }
+                }
+            }
+            input:checked + .labels label {
+                &:first-of-type {
+                    background-color: transparent;
+                }
+                &:last-of-type {
+                    background-color: rgba(0, 0, 0, 0.1);
+                    pointer-events: none;
+                }
+            }
+            input:not(:checked) + .labels label {
+                &:first-of-type {
+                    background-color: rgba(0, 0, 0, 0.1);
+                    pointer-events: none;
+                }
+                &:last-of-type {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
     .skill-list {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -84,7 +153,6 @@ const skillGroups = [
             gap: 0.5rem;
             padding: 1rem;
             border-radius: 8px;
-            background-color: var(--card-bg);
             transition:
                 transform 0.3s ease,
                 box-shadow 0.3s ease;
@@ -142,4 +210,50 @@ const skillGroups = [
             }
         }
     }
-</style>
+
+    .skills:has(#view-toggle:checked) {
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            grid-template-columns: none;
+        }
+        .item {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            gap: 1rem;
+            &:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            [data-icon] {
+                font-size: 2rem;
+            }
+            p {
+                order: 2;
+                margin-left: auto;
+                font-size: 1rem;
+            }
+            span {
+                position: static;
+                transform: none;
+                background: none;
+                color: inherit;
+                padding: 0;
+                border-radius: 0;
+                font-size: 1rem;
+                white-space: normal;
+                opacity: 1;
+                visibility: visible;
+                transition: none;
+                order: 1;
+                &:before {
+                    display: none;
+                }
+            }
+            &:hover span {
+                transform: none;
+            }
+        }
+    
