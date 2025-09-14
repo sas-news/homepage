@@ -1,6 +1,5 @@
 ---
 import "@styles/global.css";
-import Top from "@components/Top.astro";
 ---
 
 <html lang="ja">
@@ -15,20 +14,6 @@ import Top from "@components/Top.astro";
     </head>
 
     <body>
-        <Top />
-        <main>
-            <slot />
-        </main>
+        <slot />
     </body>
 </html>
-
-<style>
-    main {
-        display: flex;
-        flex-direction: column;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 1rem;
-        gap: 2.5rem;
-    }
-</style>
