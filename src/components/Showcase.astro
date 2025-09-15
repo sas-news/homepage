@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+import Background from "@img/background.png";
+import Pong from "@img/showcase/DiscordPong.png";
+import SSSS from "@img/showcase/super-sns-simulator.png";
+const showcases = [
+    {
+        name: "ポートフォリオ",
+        description: "このウェブサイト。AstroとTypeScriptで作成しました。",
+        imageUrl: Background,
+    },
+    {
+        name: "Discord Pong",
+        description:
+            "Discord上で動作するシンプルなPongゲーム。Discord Embedded App SDKを使用しています。",
+        imageUrl: Pong,
+        link: "https://github.com/sas-news/Discord-Pong",
+    },
+    {
+        name: "Super SNS Simulator",
+        description:
+            "多言語間のコミュニケーションをスムーズにする究極のSNS。ReactとTypeScriptを用いてモックアップを開発しました。",
+        imageUrl: SSSS,
+    },
+];
+---
+
+<div class="showcase card">
+    <h2>Showcase</h2>
+    <div class="showcase-grid">
+        {
+            showcases.map((item) => (
+                <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class:list={["showcase-item", { "no-link": !item.link }]}
+                >
+                    <Image
+                        class="image"
+                        src={item.imageUrl}
+                        alt={item.name}
+                        width={320}
+                        height={180}
+                    />
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
+                </a>
+            ))
+        }
+    </div>
+</div>
+
+<style>
+    .showcase-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .showcase-item {
+        border: 1px solid var(--border-color);
+        padding: 1rem;
+        border-radius: 8px;
+        text-decoration: none;
+        color: inherit;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            h3 {
+                text-decoration: underline;
+            }
+        }
+        &.no-link {
+            pointer-events: none;
+            cursor: default;
+            &:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+        .image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border: 2px solid #eee;
+        }
+
+        p {
+            margin-top: 0.5rem;
+            flex-grow: 1;
+        }
+    }
+</style>
