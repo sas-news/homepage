@@ -3,24 +3,36 @@ import { Image } from "astro:assets";
 import Background from "@img/background.png";
 import Pong from "@img/showcase/DiscordPong.png";
 import SSSS from "@img/showcase/super-sns-simulator.png";
+import atArt from "@img/showcase/at-art.png";
+
 const showcases = [
     {
-        name: "ポートフォリオ",
-        description: "このウェブサイト。AstroとTypeScriptで作成しました。",
+        name: "SAS新聞 Official Website",
+        description: "このウェブサイト。",
         imageUrl: Background,
+        link: "https://github.com/sas-news/homepage",
+        tags: ["Astro", "TypeScript"],
     },
     {
         name: "Discord Pong",
-        description:
-            "Discord上で動作するシンプルなPongゲーム。Discord Embedded App SDKを使用しています。",
+        description: "Discord上で動作するシンプルなPongゲーム。Discord Embedded App SDKを使用。",
         imageUrl: Pong,
         link: "https://github.com/sas-news/Discord-Pong",
+        tags: ["React", "JavaScript", "WebSocket", "Three.js"],
     },
     {
         name: "Super SNS Simulator",
-        description:
-            "多言語間のコミュニケーションをスムーズにする究極のSNS。ReactとTypeScriptを用いてモックアップを作成しました。",
+        description: "多言語間のコミュニケーションをスムーズにする究極のSNSのモックアップ。",
         imageUrl: SSSS,
+        tags: ["React", "TypeScript"],
+    },
+    {
+        name: "atArt",
+        description:
+            "絵画鑑賞をより楽しくするためのアプリ。座標を指定したコメント機能を備えています。",
+        imageUrl: atArt,
+        link: "https://github.com/EK-FLL/shin_at-art",
+        tags: ["Next.js", "TypeScript", "Material UI", "Firebase"],
     },
 ];
 ---
@@ -45,6 +57,11 @@ const showcases = [
                     />
                     <h3>{item.name}</h3>
                     <p>{item.description}</p>
+                    <div class="tags">
+                        {item.tags.map((tag) => (
+                            <span class="tag">{tag}</span>
+                        ))}
+                    </div>
                 </a>
             ))
         }
@@ -97,5 +114,19 @@ const showcases = [
             margin-top: 0.5rem;
             flex-grow: 1;
         }
+    }
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    .tag {
+        --tag-color: #3099df;
+        padding: 0.25rem 0.5rem;
+        color: var(--tag-color);
+        border: 1px solid var(--tag-color);
+        border-radius: 100vmax;
+        font-size: 0.8rem;
     }
 </style>
