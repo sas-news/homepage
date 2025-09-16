@@ -1,0 +1,69 @@
+---
+const currentYear = new Date().getFullYear();
+const email = "contact@example.com";
+---
+
+<footer>
+    <div class="footer-container">
+        <div class="about">
+            <h3>SAS新聞</h3>
+            <p>Web Developer / <wbr />Student</p>
+        </div>
+        <div class="contact">
+            <h3>Contact</h3>
+            <a href="mailto:{email}">{email}</a>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; {currentYear} sas-news.<wbr /> All rights reserved.</p>
+    </div>
+</footer>
+<style>
+    footer {
+        background-color: #f0f0f0;
+        margin-top: 3rem;
+        padding: 3rem 5%;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-bottom: 3rem;
+        margin-inline: auto;
+        padding-inline: 5%;
+
+        & > div {
+            flex: 1;
+            max-width: 300px;
+        }
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+        white-space: nowrap;
+    }
+    p,
+    a {
+        color: #555;
+        white-space: nowrap;
+    }
+
+    a {
+        text-decoration: none;
+        transition: color 0.3s;
+        &:hover {
+            color: #000;
+        }
+    }
+
+    .copyright {
+        border-top: 1px solid #ddd;
+        padding-top: 3rem;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+</style>
