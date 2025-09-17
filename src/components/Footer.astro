@@ -1,17 +1,26 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const currentYear = new Date().getFullYear();
 const email = "contact@example.com";
+const githubRepoUrl = "https://github.com/sas-news/homepage";
 ---
 
 <footer>
     <div class="footer-container">
         <div class="about">
             <h3>SAS新聞</h3>
-            <p>Web Developer / <wbr />Student</p>
+            <p>Web Developer / Student</p>
         </div>
         <div class="contact">
             <h3>Contact</h3>
             <a href="mailto:{email}">{email}</a>
+        </div>
+        <div class="repository">
+            <h3>Repository</h3>
+            <a href={githubRepoUrl} target="_blank" rel="noopener noreferrer">
+                <Icon name="simple-icons:github" />&nbsp;GitHub
+            </a>
         </div>
     </div>
     <div class="copyright">
@@ -26,30 +35,23 @@ const email = "contact@example.com";
     }
 
     .footer-container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 3rem;
         margin-bottom: 3rem;
         margin-inline: auto;
         padding-inline: 5%;
-
-        & > div {
-            flex: 1;
-            max-width: 300px;
-        }
     }
 
     h3 {
         font-size: 1.2rem;
         margin-bottom: 0.75rem;
-        white-space: nowrap;
     }
     p,
     a {
         color: #555;
-        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
     }
 
     a {
