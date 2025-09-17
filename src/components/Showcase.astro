@@ -63,32 +63,36 @@ const showcases = await Promise.all(
     <h2>Showcase</h2>
     <div class="showcase-grid">
         {
-            showcases.map((item) => (
-                <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class:list={["showcase-item", { "no-link": !item.link }]}
-                >
-                    <picture>
-                        <source media="(450px <= width <= 610px)" srcset={item.highRes.src} />
-                        <img
-                            class="image"
-                            src={item.lowRes.src}
-                            alt={item.name}
-                            width="320"
-                            height="180"
-                        />
-                    </picture>
-                    <h3>{item.name}</h3>
-                    <p>{item.description}</p>
-                    <div class="tags">
-                        {item.tags.map((tag) => (
-                            <span class="tag">{tag}</span>
-                        ))}
-                    </div>
-                </a>
-            ))
+            showcases.map((item) => {
+                const Tag = item.link ? "a" : "span";
+                const attributes = {
+                    ...(item.link
+                        ? { href: item.link, target: "_blank", rel: "noopener noreferrer" }
+                        : {}),
+                };
+
+                return (
+                    <Tag class:list={["showcase-item", { "no-link": !item.link }]} {...attributes}>
+                        <picture>
+                            <source media="(450px <= width <= 610px)" srcset={item.highRes.src} />
+                            <img
+                                class="image"
+                                src={item.lowRes.src}
+                                alt={item.name}
+                                width="320"
+                                height="180"
+                            />
+                        </picture>
+                        <h3>{item.name}</h3>
+                        <p>{item.description}</p>
+                        <div class="tags">
+                            {item.tags.map((tag) => (
+                                <span class="tag">{tag}</span>
+                            ))}
+                        </div>
+                    </Tag>
+                );
+            })
         }
     </div>
 </div>
@@ -147,7 +151,7 @@ const showcases = await Promise.all(
         margin-top: 1rem;
     }
     .tag {
-        --tag-color: #3099df;
+        --tag-color: #1256af;
         padding: 0.25rem 0.5rem;
         color: var(--tag-color);
         border: 1px solid var(--tag-color);
