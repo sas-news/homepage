@@ -418,4 +418,19 @@ const skillGroups = [
             }
         }
     }
+    @media (prefers-color-scheme: dark) {
+        .skills-header .view-switch .labels {
+            background-color: rgba(255, 255, 255, 0.2);
+            [data-icon] {
+                color: #aaa;
+                filter: brightness(0.8);
+            }
+        }
+        .skills-content-wrapper::after {
+            background: linear-gradient(to top, #444444ee, transparent);
+        }
+        .expand-label {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
 </style>

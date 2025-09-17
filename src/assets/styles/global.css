@@ -16,3 +16,10 @@
     scroll-behavior: smooth;
     interpolate-size: allow-keywords;
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color: #f9f9f9;
+        background-color: #333;
+    }
+}

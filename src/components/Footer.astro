@@ -66,4 +66,25 @@ const email = "contact@example.com";
         font-size: 0.9rem;
         text-align: center;
     }
+    @media (prefers-color-scheme: dark) {
+        footer {
+            background-color: #1e1e1e;
+        }
+        .footer-container {
+            & > div {
+                max-width: 100%;
+            }
+        }
+        h3 {
+            color: #eee;
+        }
+        p,
+        a {
+            color: #aaa;
+        }
+        a {
+            &:hover {
+                color: #fff;
+            }
+        }
 </style>

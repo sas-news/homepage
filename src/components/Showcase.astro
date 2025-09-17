@@ -100,7 +100,7 @@ const showcases = await Promise.all(
         gap: 1rem;
     }
     .showcase-item {
-        border: 1px solid var(--border-color);
+        border: 1px solid #ddd;
         padding: 1rem;
         border-radius: 8px;
         text-decoration: none;
@@ -172,6 +172,14 @@ const showcases = await Promise.all(
             .tag {
                 font-size: min(0.7rem, 5vw);
                 padding: 0.2rem 0.4rem;
+            }
+        }
+    }
+    @media (prefers-color-scheme: dark) {
+        .showcase-item {
+            border-color: #333;
+            .image {
+                border-color: #555;
             }
         }
     }
