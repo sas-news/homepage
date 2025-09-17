@@ -141,6 +141,7 @@ const skillGroups = [
         padding: 0.5rem 2rem;
         border-radius: 100vmax;
         cursor: pointer;
+        white-space: nowrap;
         z-index: 1;
         transition:
             font-size 0.3s,
@@ -189,6 +190,19 @@ const skillGroups = [
                 scale: 1.05;
             }
         }
+
+        @media (width < 400px) {
+            padding: 0.4rem 1.5rem;
+            font-size: 0.9rem;
+            &:hover {
+                &.more {
+                    font-size: 1rem;
+                }
+                &.less {
+                    scale: 1.02;
+                }
+            }
+        }
     }
 
     .skills-container h3 {
@@ -202,6 +216,10 @@ const skillGroups = [
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 1rem;
+        h2 {
+            margin: 0;
+        }
         .view-switch {
             position: relative;
             input {
@@ -222,6 +240,14 @@ const skillGroups = [
                     [data-icon] {
                         font-size: 1.1rem;
                         color: #666;
+                    }
+                }
+                @media (width < 400px) {
+                    label {
+                        padding: 0.2rem;
+                        [data-icon] {
+                            font-size: 1rem;
+                        }
                     }
                 }
             }
@@ -328,6 +354,7 @@ const skillGroups = [
             align-items: center;
             padding: 0.5rem 1rem;
             gap: 1rem;
+            container-type: normal;
             &:hover {
                 transform: none;
                 box-shadow: none;
@@ -359,6 +386,35 @@ const skillGroups = [
             }
             &:hover span {
                 transform: none;
+            }
+        }
+
+        @media (250px <= width < 350px) {
+            .item {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                p {
+                    margin: 0;
+                    width: 100%;
+                }
+            }
+        }
+        @media (width < 250px) {
+            .item {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                [data-icon] {
+                    font-size: 1.5rem;
+                }
+                p {
+                    order: 1;
+                    margin: 0;
+                    font-size: 0.9rem;
+                }
+                span {
+                    order: 2;
+                    font-size: 0.9rem;
+                }
             }
         }
     }

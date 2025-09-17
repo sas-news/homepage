@@ -1,11 +1,11 @@
 ---
-import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
 import Background from "@img/background.png";
 import Pong from "@img/showcase/DiscordPong.png";
 import SSSS from "@img/showcase/super-sns-simulator.png";
 import atArt from "@img/showcase/at-art.png";
 
-const showcases = [
+const showcasesRaw = [
     {
         name: "SAS新聞 Official Website",
         description: "このウェブサイト。",
@@ -35,6 +35,28 @@ const showcases = [
         tags: ["Next.js", "TypeScript", "Material UI", "Firebase"],
     },
 ];
+
+const showcases = await Promise.all(
+    showcasesRaw.map(async (item) => {
+        const highRes = await getImage({
+            src: item.imageUrl,
+            width: 640,
+            height: 360,
+            format: "webp",
+        });
+        const lowRes = await getImage({
+            src: item.imageUrl,
+            width: 320,
+            height: 180,
+            format: "webp",
+        });
+        return {
+            ...item,
+            highRes,
+            lowRes,
+        };
+    })
+);
 ---
 
 <div class="showcase card">
@@ -48,13 +70,16 @@ const showcases = [
                     rel="noopener noreferrer"
                     class:list={["showcase-item", { "no-link": !item.link }]}
                 >
-                    <Image
-                        class="image"
-                        src={item.imageUrl}
-                        alt={item.name}
-                        width={320}
-                        height={180}
-                    />
+                    <picture>
+                        <source media="(450px <= width <= 610px)" srcset={item.highRes.src} />
+                        <img
+                            class="image"
+                            src={item.lowRes.src}
+                            alt={item.name}
+                            width="320"
+                            height="180"
+                        />
+                    </picture>
                     <h3>{item.name}</h3>
                     <p>{item.description}</p>
                     <div class="tags">
@@ -128,5 +153,26 @@ const showcases = [
         border: 1px solid var(--tag-color);
         border-radius: 100vmax;
         font-size: 0.8rem;
+    }
+
+    @media (width < 350px) {
+        .showcase-grid {
+            grid-template-columns: 1fr;
+        }
+        .showcase-item {
+            padding: 0.5rem;
+            .image {
+                aspect-ratio: auto;
+                height: 120px;
+            }
+            .tags {
+                gap: 0.25rem;
+                margin-top: 0.5rem;
+            }
+            .tag {
+                font-size: min(0.7rem, 5vw);
+                padding: 0.2rem 0.4rem;
+            }
+        }
     }
 </style>
