@@ -5,9 +5,9 @@ const skillGroups = [
     {
         category: "プログラミング言語・言語",
         skills: [
+            { name: "JavaScript", icon: "skill-icons:javascript", level: 5 },
             { name: "HTML", icon: "skill-icons:html", level: 5 },
             { name: "CSS", icon: "skill-icons:css", level: 4 },
-            { name: "JavaScript", icon: "skill-icons:javascript", level: 4 },
             { name: "TypeScript", icon: "skill-icons:typescript", level: 3 },
             { name: "Python", icon: "skill-icons:python-light", level: 3 },
             { name: "Java", icon: "skill-icons:java-light", level: 2 },
@@ -32,9 +32,7 @@ const skillGroups = [
             { name: "GitHub", icon: "skill-icons:github-dark", level: 4 },
             { name: "Arch Linux", icon: "skill-icons:arch-dark", level: 4 },
             { name: "Arduino", icon: "skill-icons:arduino", level: 3 },
-            { name: "Raspberry Pi", icon: "skill-icons:raspberrypi-light", level: 3 },
-            { name: "Azure", icon: "skill-icons:azure-light", level: 3 },
-            { name: "Neovim", icon: "skill-icons:neovim-light", level: 2 },
+            { name: "Raspberry Pi", icon: "skill-icons:raspberrypi-light", level: 2 },
         ],
     },
     {
@@ -205,18 +203,14 @@ const skillGroups = [
         }
     }
 
+
     .skills-container h3 {
         margin-top: 1rem;
-
-        &:first-of-type {
-            margin-top: 0;
-        }
     }
     .skills-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1rem;
         h2 {
             margin: 0;
         }
