@@ -81,6 +81,10 @@ const showcases = await Promise.all(
                                 alt={item.name}
                                 width="320"
                                 height="180"
+                                style={`aspect-ratio: 16 / 9;`}
+                                decoding="async"
+                                fetchpriority="auto"
+                                loading="lazy"
                             />
                         </picture>
                         <h3>{item.name}</h3>

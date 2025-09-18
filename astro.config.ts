@@ -4,8 +4,8 @@ import { defineConfig } from "astro/config";
 
 import icon from "astro-icon";
 import playformCompress from "@playform/compress";
-import playformInline from "@playform/inline";
 import compressor from "astro-compressor";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,6 +31,7 @@ export default defineConfig({
     server: {
         host: true,
     },
+    site: "https://www.sasnews.dev",
 
-    integrations: [icon(), playformCompress({ CSS: false }), playformInline(), compressor()],
+    integrations: [icon(), playformCompress({ CSS: false }), compressor(), sitemap()],
 });
