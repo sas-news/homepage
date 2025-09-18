@@ -251,18 +251,20 @@ const skillGroups = [
                     }
                 }
             }
+
+            --checked-bg: rgba(0, 0, 0, 0.1);
             input:checked + .labels label {
                 &:first-of-type {
                     background-color: transparent;
                 }
                 &:last-of-type {
-                    background-color: rgba(0, 0, 0, 0.1);
+                    background-color: var(--checked-bg);
                     pointer-events: none;
                 }
             }
             input:not(:checked) + .labels label {
                 &:first-of-type {
-                    background-color: rgba(0, 0, 0, 0.1);
+                    background-color: var(--checked-bg);
                     pointer-events: none;
                 }
                 &:last-of-type {
@@ -419,12 +421,15 @@ const skillGroups = [
         }
     }
     @media (prefers-color-scheme: dark) {
-        .skills-header .view-switch .labels {
-            background-color: rgba(255, 255, 255, 0.2);
-            [data-icon] {
-                color: #aaa;
-                filter: brightness(0.8);
+        .skills-header .view-switch {
+            .labels {
+                background-color: rgba(255, 255, 255, 0.2);
+                [data-icon] {
+                    color: #eee;
+                }
             }
+
+            --checked-bg: rgba(255, 255, 255, 0.1);
         }
         .skills-content-wrapper::after {
             background: linear-gradient(to top, #444444ee, transparent);

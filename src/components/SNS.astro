@@ -8,6 +8,7 @@ const snsLinks = [
         icon: "simple-icons:github",
         account: "sas-news",
         color: "#181717",
+        colorDark: "#f9f9f9",
     },
     {
         name: "X",
@@ -15,6 +16,7 @@ const snsLinks = [
         icon: "simple-icons:x",
         account: "sas_shinbun",
         color: "#0f1419",
+        colorDark: "#f9f9f9",
     },
     {
         name: "Zenn",
@@ -43,8 +45,9 @@ const snsLinks = [
                         href={`${link.url.replace(/\/?$/, "/")}${link.account || ""}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        style={`--icon-color: ${link.color}; --icon-color-dark: ${link.colorDark || link.color}`}
                     >
-                        <Icon name={link.icon} style={{ color: link.color }} />
+                        <Icon name={link.icon} />
                         <span class="account-info">
                             <span class="service-name">{link.name}</span>
                             <span class="account-id">@{link.account || "N/A"}</span>
@@ -82,7 +85,7 @@ const snsLinks = [
         border-radius: 8px;
         gap: 1rem;
         text-decoration: none;
-        color: #222;
+        color: #333;
         transition: all 0.3s ease;
         &:hover {
             background-color: #fafafa;
@@ -94,6 +97,7 @@ const snsLinks = [
         [data-icon] {
             font-size: 1.8rem;
             flex-shrink: 0;
+            color: var(--icon-color);
         }
 
         .account-info {
@@ -141,15 +145,18 @@ const snsLinks = [
     @media (prefers-color-scheme: dark) {
         a {
             border: 1px solid #333;
-            color: #ddd;
+            color: #f9f9f9;
             &:hover {
                 background-color: #333;
                 border-color: #444;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             }
+            [data-icon] {
+                color: var(--icon-color-dark);
+            }
             .account-info {
                 .account-id {
-                    color: #aaa;
+                    color: #ddd;
                 }
             }
         }
