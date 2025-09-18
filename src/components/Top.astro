@@ -6,6 +6,9 @@ import Logo from "@img/sasnews-logo.png";
 import Back from "@img/background.png";
 ---
 
+<div id="load-time-container">
+    <p id="load-time">Loading...</p>
+</div>
 <div class="top">
     <Image
         src={Back}
@@ -23,7 +26,40 @@ import Back from "@img/background.png";
     </div>
 </div>
 
+<script>
+    const loadTimeEl = document.getElementById("load-time");
+    const loadTimeContainer = document.getElementById("load-time-container");
+    if (loadTimeEl && loadTimeContainer) {
+        const now = performance.now();
+        loadTimeEl.textContent = `Load time: ${now.toFixed(2)} ms!`;
+
+        loadTimeContainer.classList.add("show");
+
+        const timer = setTimeout(() => {
+            loadTimeContainer.classList.remove("show");
+        }, 5000);
+    }
+</script>
+
 <style>
+    #load-time-container {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, calc(-100% - 20px));
+        background-color: #b8eb9b;
+        padding: 0.5rem 1rem;
+        text-align: center;
+        z-index: 1000;
+        transition: transform 0.5s ease-in-out;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+
+        &.show {
+            transform: translate(-50%, 0);
+        }
+    }
     .top {
         position: relative;
         overflow: hidden;
@@ -90,6 +126,10 @@ import Back from "@img/background.png";
         }
     }
     @media (prefers-color-scheme: dark) {
+        #load-time-container {
+            background-color: #106515;
+            color: #fff;
+        }
         .top .blur-bg {
             filter: blur(5px) brightness(1.1) opacity(0.15) contrast(1.2) invert(1);
         }
