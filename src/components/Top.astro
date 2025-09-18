@@ -45,8 +45,11 @@ import Back from "@img/background.png";
     #load-time-container {
         position: fixed;
         top: 0;
-        left: 50%;
-        transform: translate(-50%, calc(-100% - 20px));
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: fit-content;
+        transform: translateY(calc(-100% - 20px));
         background-color: #b8eb9b;
         padding: 0.5rem 1rem;
         text-align: center;
@@ -57,7 +60,7 @@ import Back from "@img/background.png";
         white-space: nowrap;
 
         &.show {
-            transform: translate(-50%, 0);
+            transform: translateY(0);
         }
     }
     .top {

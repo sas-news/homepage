@@ -3,6 +3,9 @@
 import { defineConfig } from "astro/config";
 
 import icon from "astro-icon";
+import playformCompress from "@playform/compress";
+import playformInline from "@playform/inline";
+import compressor from "astro-compressor";
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,5 +32,5 @@ export default defineConfig({
         host: true,
     },
 
-    integrations: [icon()],
+    integrations: [icon(), playformCompress({ CSS: false }), playformInline(), compressor()],
 });
