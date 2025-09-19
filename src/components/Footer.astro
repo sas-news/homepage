@@ -28,10 +28,17 @@ const githubRepoUrl = "https://github.com/sas-news/homepage";
     </div>
 </footer>
 <style>
+    :global(body) {
+        min-height: 100dvh;
+    }
+
     footer {
         background-color: #f0f0f0;
         margin-top: 3rem;
-        padding: 3rem 5%;
+        padding-block: 3rem;
+        padding-inline: 10% 5%;
+        position: sticky;
+        top: 100%;
     }
 
     .footer-container {
@@ -40,7 +47,7 @@ const githubRepoUrl = "https://github.com/sas-news/homepage";
         gap: 3rem;
         margin-bottom: 3rem;
         margin-inline: auto;
-        padding-inline: 5%;
+        max-width: 800px;
     }
 
     h3 {
@@ -88,4 +95,5 @@ const githubRepoUrl = "https://github.com/sas-news/homepage";
                 color: #fff;
             }
         }
+    }
 </style>

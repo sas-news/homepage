@@ -4,6 +4,7 @@ import Background from "@img/background.png";
 import Pong from "@img/showcase/DiscordPong.png";
 import SSSS from "@img/showcase/super-sns-simulator.png";
 import atArt from "@img/showcase/at-art.png";
+import Eiko from "@img/showcase/eikofestival-ignite.png";
 
 const showcasesRaw = [
     {
@@ -12,6 +13,15 @@ const showcasesRaw = [
         imageUrl: Background,
         link: "https://github.com/sas-news/homepage",
         tags: ["Astro", "TypeScript"],
+        year: 2025,
+    },
+    {
+        name: "第78回栄光祭公式HP",
+        description: "栄光祭の公式サイトです。コーディングを担当しました。",
+        imageUrl: Eiko,
+        link: "https://fes78.eikogakuen.com",
+        tags: ["Astro", "React", "TypeScript", "Leaflet"],
+        year: 2025,
     },
     {
         name: "Discord Pong",
@@ -19,12 +29,14 @@ const showcasesRaw = [
         imageUrl: Pong,
         link: "https://github.com/sas-news/Discord-Pong",
         tags: ["React", "JavaScript", "WebSocket", "Three.js"],
+        year: 2024,
     },
     {
         name: "Super SNS Simulator",
         description: "多言語間のコミュニケーションをスムーズにする究極のSNSのモックアップ。",
         imageUrl: SSSS,
         tags: ["React", "TypeScript"],
+        year: 2024,
     },
     {
         name: "atArt",
@@ -33,6 +45,7 @@ const showcasesRaw = [
         imageUrl: atArt,
         link: "https://github.com/EK-FLL/shin_at-art",
         tags: ["Next.js", "TypeScript", "Material UI", "Firebase"],
+        year: 2023,
     },
 ];
 
@@ -87,7 +100,10 @@ const showcases = await Promise.all(
                                 loading="lazy"
                             />
                         </picture>
-                        <h3>{item.name}</h3>
+                        <div class="title-line">
+                            <h3>{item.name}</h3>
+                            <span class="year">{item.year}</span>
+                        </div>
                         <p>{item.description}</p>
                         <div class="tags">
                             {item.tags.map((tag) => (
@@ -148,6 +164,21 @@ const showcases = await Promise.all(
             flex-grow: 1;
         }
     }
+    .title-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.5rem;
+        @media (width < 250px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+    .year {
+        font-size: 0.9rem;
+        color: #666;
+        flex-shrink: 0;
+    }
     .tags {
         display: flex;
         flex-wrap: wrap;
@@ -192,6 +223,9 @@ const showcases = await Promise.all(
         }
         .tag {
             --tag-color: #9feaf9;
+        }
+        .year {
+            color: #aaa;
         }
     }
 </style>
