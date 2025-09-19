@@ -24,6 +24,7 @@ import Back from "@img/background.png";
         <Image src={Logo} alt="SAS新聞ロゴ" width={150} height={150} class="logo" />
         <div class="title-contents">
             <h1 class="name">SAS新聞</h1>
+            <p class="description">Webに沈む<wbr />高校2年生</p>
         </div>
     </div>
 </div>
@@ -96,7 +97,6 @@ import Back from "@img/background.png";
         align-items: center;
         justify-content: center;
         height: 100%;
-        text-align: center;
         gap: 1rem;
     }
     .logo {
@@ -112,11 +112,17 @@ import Back from "@img/background.png";
             font-size: 2.25rem;
             font-weight: bold;
         }
+        .description {
+            color: #666;
+            white-space: nowrap;
+            margin-top: 0.5rem;
+        }
     }
     @media (width < 450px) {
         .title-section {
             flex-direction: column;
             gap: 0.5rem;
+            text-align: center;
         }
         .logo {
             width: 120px;
@@ -127,6 +133,10 @@ import Back from "@img/background.png";
             margin-inline: 0;
             .name {
                 font-size: 1.75rem;
+            }
+            .description {
+                margin-top: 0.25rem;
+                margin-inline: 1rem;
             }
         }
     }
