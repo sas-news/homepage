@@ -54,6 +54,7 @@ import Back from "@img/background.png";
         width: fit-content;
         transform: translateY(calc(-100% - 20px));
         background-color: #b8eb9b;
+        color: #555;
         padding: 0.5rem 1rem;
         text-align: center;
         z-index: 1000;
@@ -142,8 +143,8 @@ import Back from "@img/background.png";
     }
     @media (prefers-color-scheme: dark) {
         #load-time-container {
-            background-color: #106515;
-            color: #fff;
+            background-color: #4D7626;
+            color: #eee;
         }
         .top .blur-bg {
             filter: blur(5px) brightness(1.1) opacity(0.15) contrast(1.2) invert(1);
@@ -151,6 +152,9 @@ import Back from "@img/background.png";
         .logo {
             background-color: #eee;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .title-contents .description {
+            color: #ccc;
         }
     }
 </style>
