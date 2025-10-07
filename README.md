@@ -1,8 +1,6 @@
-# SAS 新聞 | Official Site
+# [SAS 新聞 | Official Site](https://sasnews.dev)
 
 このリポジトリは、SAS 新聞の公式ウェブサイトのソースコードです。
-
-**作り途中です。まだ公開していません。**
 
 ## ディレクトリ構成
 
